@@ -38,3 +38,13 @@ func InsertCustomer(customer CustomerORM, db *gorm.DB) {
 	}
 	log.Println("Success insert data")
 }
+
+//GetCustomers show all data from database customer, using gorm
+func GetCustomers(db *gorm.DB) {
+	var customer []CustomerORM
+	if err := db.Preload("AccountORM").Find(&customer).Error; err != nil {
+		log.Println("failed to get data :", err.Error())
+		return
+	}
+	log.Println(customer)
+}

@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/FahrizalSatya/pengenalan-database1/sql-generic/config"
+	"github.com/FahrizalSatya/pengenalan-database1/sql-generic/database"
 
 	"github.com/spf13/viper"
 )
@@ -36,7 +37,8 @@ func main() {
 	// 	PhoneNumber:  "0812384",
 	// }, db)
 
-	database.GetCustomers(db)
+	// database.getcustomers(db)
+	database.DeleteCustomer(1, db)
 }
 
 func getConfig() (config.Config, error) {

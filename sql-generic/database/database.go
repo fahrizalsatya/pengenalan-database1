@@ -77,3 +77,12 @@ func GetCustomers(db *sql.DB) {
 
 	log.Println(result)
 }
+
+//DeleteCustomer for delete data from database based on their customer_id
+func DeleteCustomer(id int, db *sql.DB) {
+	_, err := db.Exec("delete from customers where customer_id = ?", id)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+}

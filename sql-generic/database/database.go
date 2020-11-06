@@ -86,3 +86,13 @@ func DeleteCustomer(id int, db *sql.DB) {
 		return
 	}
 }
+
+//UpdateCustomer Age based on their customer_id
+func UpdateCustomer(age int, id int, db *sql.DB) {
+	_, err := db.Exec("update customers set age = ? where customer_id = ?", age, id)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	log.Println("update success!")
+}

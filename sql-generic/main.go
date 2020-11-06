@@ -38,7 +38,8 @@ func main() {
 	// }, db)
 
 	// database.getcustomers(db)
-	database.DeleteCustomer(1, db)
+	// database.DeleteCustomer(1, db)
+	database.UpdateCustomer(30, 2, db)
 }
 
 func getConfig() (config.Config, error) {

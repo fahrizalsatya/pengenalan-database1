@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/FahrizalSatya/pengenalan-database1/sql-orm/config"
+	"github.com/FahrizalSatya/pengenalan-database1/sql-orm/database"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -17,11 +18,24 @@ func main() {
 		return
 	}
 
-	_, err = initDB(cfg.Database)
+	db, err := initDB(cfg.Database)
 	if err != nil {
 		log.Println(err)
 		return
 	}
+
+	database.InsertCustomer(database.CustomerORM{
+		FirstName:    "Fahrizal",
+		LastName:     "Satya",
+		NpwpID:       "id-1",
+		Age:          10,
+		CustomerType: "Premium",
+		Street:       "Str",
+		City:         "Jakarta",
+		State:        "Indo",
+		ZipCode:      "55555",
+		PhoneNumber:  "0812384",
+	}, db)
 }
 
 func getConfig() (config.Config, error) {

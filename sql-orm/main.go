@@ -36,7 +36,9 @@ func main() {
 	// 	ZipCode:      "55555",
 	// 	PhoneNumber:  "0812384",
 	// }, db)
-	database.GetCustomers(db)
+
+	// database.GetCustomers(db)
+	database.DeleteCustomer(1, db)
 }
 
 func getConfig() (config.Config, error) {

@@ -48,3 +48,14 @@ func GetCustomers(db *gorm.DB) {
 	}
 	log.Println(customer)
 }
+
+//DeleteCustomer delete data based on their customer_id, using gorm
+func DeleteCustomer(id int, db *gorm.DB) {
+	var customer CustomerORM
+	if err := db.Where(&CustomerORM{ID: id}).Delete(&customer).Error; err != nil {
+		log.Println("failed to delete data :", err.Error())
+		return
+	}
+
+	log.Println("Success delete data")
+}

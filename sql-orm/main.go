@@ -70,7 +70,10 @@ func initDB(dbConfig config.Database) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	db.AutoMigrate(
+		&database.CustomerORM{},
+		&database.AccountORM{},
+	)
 	log.Println("db successfully connected")
 
 	return db, nil

@@ -59,3 +59,13 @@ func DeleteCustomer(id int, db *gorm.DB) {
 
 	log.Println("Success delete data")
 }
+
+//UpdateCustomer update data based on their customer_id, using gorm
+func UpdateCustomer(customer CustomerORM, id int, db *gorm.DB) {
+	if err := db.Model(&CustomerORM{}).Where(&CustomerORM{ID: id}).Updates(customer).Error; err != nil {
+		log.Println("failed to update data :", err.Error())
+		return
+	}
+
+	log.Println("Success update data")
+}

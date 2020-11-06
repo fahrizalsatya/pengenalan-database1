@@ -38,7 +38,8 @@ func main() {
 	// }, db)
 
 	// database.GetCustomers(db)
-	database.DeleteCustomer(1, db)
+	// database.DeleteCustomer(1, db)
+	database.UpdateCustomer(database.CustomerORM{PhoneNumber: "0895012"}, 2, db)
 }
 
 func getConfig() (config.Config, error) {

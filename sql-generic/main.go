@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+
 	"github.com/FahrizalSatya/pengenalan-database1/sql-generic/config"
 
 	"github.com/spf13/viper"
@@ -41,8 +42,8 @@ func getConfig() (config.Config, error) {
 
 func connect(cfg config.Database) (*sql.DB, error) {
 	db, err := sql.Open(cfg.Driver, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?%s", cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DbName, cfg.Config))
-	if err != nil{
-		reutrn nil, err
+	if err != nil {
+		return nil, err
 	}
 
 	log.Println("db successfully connected")

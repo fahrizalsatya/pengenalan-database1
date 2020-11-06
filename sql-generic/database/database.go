@@ -2,6 +2,7 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 )
 
@@ -38,4 +39,41 @@ func InsertCustomer(customer Customer, db *sql.DB) {
 		return
 	}
 	log.Println("insert success!")
+}
+
+//GetCustomers for get all data from database
+func GetCustomers(db *sql.DB) {
+	rows, err := db.Query("select * from customers")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	defer rows.Close()
+
+	var result []Customer
+
+	for rows.Next() {
+		var each = Customer{}
+		var err = rows.Scan(
+			&each.ID,
+			&each.FirstName,
+			&each.LastName,
+			&each.NpwpID,
+			&each.Age,
+			&each.CustomerType,
+			&each.Street,
+			&each.City,
+			&each.State,
+			&each.ZipCode,
+			&each.PhoneNumber)
+
+		if err != nil {
+			fmt.Println(err.Error())
+			return
+		}
+
+		result = append(result, each)
+	}
+
+	log.Println(result)
 }

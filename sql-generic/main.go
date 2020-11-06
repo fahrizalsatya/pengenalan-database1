@@ -6,7 +6,6 @@ import (
 	"log"
 
 	"github.com/FahrizalSatya/pengenalan-database1/sql-generic/config"
-	"github.com/FahrizalSatya/pengenalan-database1/sql-generic/database"
 
 	"github.com/spf13/viper"
 )
@@ -23,18 +22,21 @@ func main() {
 		log.Println(err)
 		return
 	}
-	database.InsertCustomer(database.Customer{
-		FirstName:    "Fahrizal",
-		LastName:     "Satya",
-		NpwpID:       "id-1",
-		Age:          10,
-		CustomerType: "Premium",
-		Street:       "Str",
-		City:         "Jakarta",
-		State:        "Indo",
-		ZipCode:      "55555",
-		PhoneNumber:  "0812384",
-	}, db)
+
+	// database.InsertCustomer(database.Customer{
+	// 	FirstName:    "Fahrizal",
+	// 	LastName:     "Satya",
+	// 	NpwpID:       "id-1",
+	// 	Age:          10,
+	// 	CustomerType: "Premium",
+	// 	Street:       "Str",
+	// 	City:         "Jakarta",
+	// 	State:        "Indo",
+	// 	ZipCode:      "55555",
+	// 	PhoneNumber:  "0812384",
+	// }, db)
+
+	database.GetCustomers(db)
 }
 
 func getConfig() (config.Config, error) {
